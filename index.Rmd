@@ -26,3 +26,23 @@ p <- ggplotly(gg, tooltip="text")
 
 p
 ```
+
+
+## Code
+```{r, eval=F, echo=T}
+require(plotly)
+
+gg <- ggplot(mtcars) +
+    aes(x=disp, y=mpg, color=factor(cyl), size=wt,
+        text = paste0(rownames(mtcars), "<br>Displacement (cu.in.): ",
+                      disp, "<br>Miles/gallon: ", mpg,
+                      "<br>Number of cylinders: ", cyl,
+                      "<br>Weight (lbs): ", 1000*wt)) + 
+    geom_point(alpha=0.5) +
+    labs(x="Displacement", y="Miles per Gallon",
+         color="Cylinders", size=NULL)
+
+p <- ggplotly(gg, tooltip="text")
+
+p
+```
